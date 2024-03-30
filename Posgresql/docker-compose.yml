@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  #database section
+  postgresdb:
+    image: postgres:alpine3.16
+
+#network section
+networks:
+  default:
+    name: tedu_microservices
+    driver: bridge
+
+#volumes sections
+volumes:
+  postgres_data:
+    name: postgres_data
