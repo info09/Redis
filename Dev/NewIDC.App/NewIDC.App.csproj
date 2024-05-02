@@ -1,0 +1,300 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F3FA54FE-81A2-49C5-AE98-C200CBCDB60B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>NewIDC.App</RootNamespace>
+    <AssemblyName>NewIDC.App</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Faker.Net.4.6, Version=2.0.163.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Faker.Net.2.0.163\lib\net462\Faker.Net.4.6.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Models\LibraryModels\ColoringColumnModels.cs" />
+    <Compile Include="Models\LibraryModels\ColoringRowModels.cs" />
+    <Compile Include="Models\LibraryModels\MultipleDataTemplateModels.cs" />
+    <Compile Include="Styles\Library\NumericUpDown.xaml.cs">
+      <DependentUpon>NumericUpDown.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Styles\Library\CommonDataGrid.xaml.cs">
+      <DependentUpon>CommonDataGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Styles\Library\CoreDataGrid.xaml.cs">
+      <DependentUpon>CoreDataGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Styles\Library\LibraryServices\DataGridServices.cs" />
+    <Compile Include="ViewModels\AmountFormatChangeSettingVM.cs" />
+    <Compile Include="ViewModels\BaseVM.cs" />
+    <Compile Include="ViewModels\DataGridVM.cs" />
+    <Compile Include="ViewModels\RuleAddColumnVM.cs" />
+    <Compile Include="Views\DataGridSample.xaml.cs">
+      <DependentUpon>DataGridSample.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Command\RelayCommand.cs" />
+    <Compile Include="ViewModels\SourceFileVM.cs" />
+    <Compile Include="Views\IProjectSetting.cs" />
+    <Compile Include="Views\RuleAdd\RuleAddColumn.xaml.cs">
+      <DependentUpon>RuleAddColumn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RuleAdd\RuleAddColumnBase.xaml.cs">
+      <DependentUpon>RuleAddColumnBase.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RuleAdd\RuleAddEmptyColumn.xaml.cs">
+      <DependentUpon>RuleAddEmptyColumn.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SourceFileSpecification\CurrencyDisplayedChanged.xaml.cs">
+      <DependentUpon>CurrencyDisplayedChanged.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SourceFileSpecification\DFileReferenceError.xaml.cs">
+      <DependentUpon>DFileReferenceError.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SourceFileSpecification\NewTitleFile.xaml.cs">
+      <DependentUpon>NewTitleFile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SourceFileSpecification\SourceFileDetailsSetting.xaml.cs">
+      <DependentUpon>SourceFileDetailsSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SourceFileSpecification\SourceFileSpecificationScreen.xaml.cs">
+      <DependentUpon>SourceFileSpecificationScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SourceFileSpecification\SpecifyFile.xaml.cs">
+      <DependentUpon>SpecifyFile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SystemSettingScreen.xaml.cs">
+      <DependentUpon>SystemSettingScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TestExecutionProjectScreen.xaml.cs">
+      <DependentUpon>TestExecutionProjectScreen.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TopScreen.xaml.cs">
+      <DependentUpon>TopScreen.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Styles\CutomScollBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Library\NumericUpDown.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\CustomBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\CustomButton.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\CustomColor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\CustomCombobox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\CustomFont.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Styles\Library\CommonDataGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Library\CoreDataGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\RestyledDataGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Views\DataGridSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RuleAdd\RuleAddColumn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RuleAdd\RuleAddColumnBase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RuleAdd\RuleAddEmptyColumn.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SourceFileSpecification\CurrencyDisplayedChanged.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SourceFileSpecification\DFileReferenceError.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SourceFileSpecification\NewTitleFile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SourceFileSpecification\SourceFileDetailsSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SourceFileSpecification\SourceFileSpecificationScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SourceFileSpecification\SpecifyFile.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SystemSettingScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TestExecutionProjectScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\TopScreen.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".gitignore" />
+    <Resource Include="Icons\down-chevron.png" />
+    <Resource Include="Icons\up-chevron.png" />
+    <Resource Include="Icons\cancel_w.png" />
+    <Resource Include="Icons\search.png" />
+    <Resource Include="Icons\zoom_in.png" />
+    <Resource Include="Icons\zoom_out.png" />
+    <Resource Include="Icons\down_arrow_disable .png" />
+    <Resource Include="Icons\downtg.png" />
+    <Resource Include="Icons\upload.png" />
+    <Resource Include="Icons\pen.png" />
+    <Resource Include="Icons\note.png" />
+    <Resource Include="Icons\setting_w.png" />
+    <Resource Include="Icons\download.png" />
+    <Resource Include="Icons\left-arrow.png" />
+    <Resource Include="Icons\right-arrow.png" />
+    <Resource Include="Icons\up-right.png" />
+    <Resource Include="Icons\cancel.png" />
+    <Resource Include="Icons\communication.png" />
+    <Resource Include="Icons\down.png" />
+    <Resource Include="Icons\help.png" />
+    <Resource Include="Icons\next.png" />
+    <Resource Include="Icons\out.png" />
+    <Resource Include="Icons\setting.png" />
+    <Resource Include="Icons\tick.png" />
+    <Resource Include="Icons\warning.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NewIDC.Projects\NewIDC.Projects.csproj">
+      <Project>{AFB5809B-2378-459D-B8E3-6410AC0BFB50}</Project>
+      <Name>NewIDC.Projects</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets'))" />
+  </Target>
+</Project>

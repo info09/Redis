@@ -1,0 +1,60 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style x:Key="GlobalFont60B" TargetType="Control">
+        <Setter Property="FontFamily" Value="Helvetica"/>
+        <Setter Property="FontSize" Value="60"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+    <Style x:Key="GlobalFont25B" TargetType="Control">
+        <Setter Property="FontFamily" Value="Helvetica"/>
+        <Setter Property="FontSize" Value="25"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+    <Style x:Key="GlobalFont25" TargetType="Control">
+        <Setter Property="FontFamily" Value="Helvetica"/>
+        <Setter Property="FontSize" Value="25"/>
+    </Style>
+    <Style x:Key="GlobalFont25T" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Helvetica"/>
+        <Setter Property="FontSize" Value="25"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+    <Style x:Key="GlobalFont50B" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Helvetica"/>
+        <Setter Property="FontSize" Value="50"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+    <Style x:Key="GlobalFont40" TargetType="Control">
+        <Setter Property="FontFamily" Value="Helvetica"/>
+        <Setter Property="FontSize" Value="40"/>
+    </Style>
+    <Style x:Key="GlobalFont40B" TargetType="Control">
+        <Setter Property="FontFamily" Value="Helvetica"/>
+        <Setter Property="FontSize" Value="40"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+    <Style x:Key="GlobalFont36" TargetType="Control">
+        <Setter Property="FontFamily" Value="Helvetica"/>
+        <Setter Property="FontSize" Value="36"/>
+    </Style>
+    <Style x:Key="GlobalFont36B" TargetType="Control">
+        <Setter Property="FontFamily" Value="Helvetica"/>
+        <Setter Property="FontSize" Value="36"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+    <Style x:Key="GlobalFont30T" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Helvetica"/>
+        <Setter Property="FontSize" Value="30"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+    <Style x:Key="GlobalFont15T" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="Helvetica"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontSize" Value="15"/>
+    </Style>
+    <Style x:Key="GlobalFont30" TargetType="Control">
+        <Setter Property="FontFamily" Value="Helvetica"/>
+        <Setter Property="FontSize" Value="30"/>
+    </Style>
+
+</ResourceDictionary>

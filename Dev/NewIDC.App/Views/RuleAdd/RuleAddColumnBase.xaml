@@ -1,0 +1,138 @@
+﻿<UserControl xmlns:Library="clr-namespace:NewIDC.App.Styles.Library"  xmlns:App="clr-namespace:NewIDC.App"  x:Class="NewIDC.App.Views.RuleAddColumn.RuleAddColumnBase" 
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NewIDC.App.Views.RuleAddColumn"
+             mc:Ignorable="d" 
+             d:DesignHeight="1080" d:DesignWidth="1920">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" x:Name="TitleSpecifyFile" 
+           Content="列の追加方法を選択してください。" 
+           Style="{StaticResource GlobalFont36}" HorizontalAlignment="Center" />
+
+        <DockPanel Grid.Row="1">
+            <DockPanel>
+                <DockPanel>
+                    <Border x:Name="ViewDatagrid" 
+                        Background="#FFFDFA"
+                        BorderBrush="Gray"
+                        BorderThickness="0.5"
+                        CornerRadius="15"
+                        Width="830" Height="670"
+                        Margin="50,0,0,0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="100"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="150"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Content="{Binding NameRuleConvert}" Style="{StaticResource GlobalFont30}" Margin="50,10,0,0" VerticalAlignment="Bottom"/>
+                            <DockPanel Grid.Row="1">
+                                <Library:CommonDataGrid x:Name="FileDataSetting" 
+                                                DataGridInput="{Binding CommonDataGridInput}"
+                                                Grid.Row="1" Margin="50,0,70,0" />
+
+                            </DockPanel>
+                            
+                            <Grid Grid.Row="2">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="800"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Background="#E6E6E6" Grid.Row="2"
+                                    BorderThickness="0.5"
+                                    CornerRadius="15"
+                                    Width="700" Height="100">
+                                    <DockPanel VerticalAlignment="Center" Margin="30,0,0,0" HorizontalAlignment="Left">
+                                        <Label Content="表示行数" Style="{StaticResource GlobalFont30}"/>
+                                        <ComboBox ItemsSource="{Binding ItemsLine}" SelectedItem="{Binding SelectedLine}" Width="150" Margin="10,0,0,0"/>
+                                        <Label Content="拡大率" Style="{StaticResource GlobalFont30}" Margin="50,0,0,0"/>
+                                        <Button x:Name="ZoomOutDG" Style="{StaticResource GlobalButtonZoom}" Margin="10,0,0,0" Click="ZoomOutDG_Click">
+                                            <Image Source="/Icons/zoom_out.png" Width="30" />
+                                        </Button>
+                                        <TextBlock x:Name="NumberScale" Text="100%" Style="{StaticResource GlobalFont25T}"  Width="80" Margin="20,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <Button x:Name="ZoomInDG" Style="{StaticResource GlobalButtonZoom}" Click="ZoomInDG_Click">
+                                            <Image Source="/Icons/zoom_in.png" Width="30"/>
+
+                                        </Button>
+                                    </DockPanel>
+                                </Border>
+                            </Grid>
+
+                        </Grid>
+                    </Border>
+                </DockPanel>
+                <DockPanel x:Name="SettingControl"  Grid.Column="1" Margin="5,0,0,0">
+                    <Border Background="#FFFDFA"
+                        BorderBrush="Gray"
+                        BorderThickness="0.5"
+                        CornerRadius="15"
+                        Width="800" Height="670"
+                        Margin="0,0,0,0" HorizontalAlignment="Left">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <DockPanel Grid.Column="0">
+                                <Button x:Name="ResizeButton" Style="{StaticResource GlobalButtonCancel}"
+                                    Background="#808080"
+                                    Content=">>"
+                                    Foreground="White"
+                                    Height="150" Width="30" Click="ResizeButton_Click"/>
+                            </DockPanel>
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="100"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="1*"/>
+                                </Grid.RowDefinitions>
+                                <DockPanel Grid.Row="0" VerticalAlignment="Center">
+                                    <Label Content="列の追加" Style="{StaticResource GlobalFont36B}"/>
+                                </DockPanel>
+                                <Button Background="Red" Width="150" Style="{StaticResource GlobalButtonOff}" HorizontalAlignment="Right" Margin="0,0,30,0">
+                                    <DockPanel>
+                                        <Image Source="/Icons/cancel_w.png" Width="30" Margin="0,0,30,0"/>
+                                        <Label Content="中止" Style="{StaticResource GlobalFont30}" Foreground="White"/>
+                                    </DockPanel>
+                                </Button>
+                                <StackPanel Grid.Row="1" VerticalAlignment="Center">
+                                    <Button x:Name="AddEmptyColumn" Width="600" Style="{StaticResource CustomMenuButton}" Click="AddEmptyColumn_Click">
+                                        <Button.Background>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#FFFC9733" Offset="0.004"/>
+                                                <GradientStop Color="#FFB86E25" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Button.Background>
+                                        <Label Content="空の列を追加" Style="{StaticResource GlobalFont40B}" Foreground="White"/>
+                                    </Button>
+                                    <Label Content="データが空の列を追加します。" Style="{StaticResource GlobalFont25}" FontSize="24" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                                </StackPanel>
+                                <StackPanel Grid.Row="2">
+                                    <Button Width="600" Style="{StaticResource CustomMenuButton}">
+                                        <Button.Background>
+                                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                                <GradientStop Color="#8FBBFC" Offset="0.004"/>
+                                                <GradientStop Color="#698ABA" Offset="1"/>
+                                            </LinearGradientBrush>
+                                        </Button.Background>
+                                        <Label Content="別ファイルの列を追加" Style="{StaticResource GlobalFont40B}" Foreground="White"/>
+                                    </Button>
+                                    <Label Content="指定したファイルから列を追加します。" Style="{StaticResource GlobalFont25}" FontSize="24" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+                                </StackPanel>
+                            </Grid>
+                            
+                        </Grid>
+                    </Border>
+                </DockPanel>
+            </DockPanel>
+        </DockPanel>
+
+        
+    </Grid>
+</UserControl>

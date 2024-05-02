@@ -1,0 +1,182 @@
+﻿<UserControl xmlns:App="clr-namespace:NewIDC.App"  x:Class="NewIDC.App.Views.SourceFileSpecification.SpecifyFile"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NewIDC.App.Views.SourceFileSpecification"
+             mc:Ignorable="d" 
+             d:DesignHeight="1040" d:DesignWidth="1920">
+    <Grid >
+        <Label x:Name="TitleSpecifyFile" 
+               Content="変換を行うファイルを選択してください。" 
+               Style="{StaticResource GlobalFont36}" HorizontalAlignment="Center"  
+      />
+        <Border  Background="#FFFDFA" BorderBrush="Gray" BorderThickness="0.5" CornerRadius="10" Width="1725" Height="680" Margin="0,50,0,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="150"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="450"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="350"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0"
+                       Margin="80,0,0,104"
+                       Content="変換元ファイル"
+                       HorizontalAlignment="Left" 
+                       Style="{StaticResource GlobalFont30}" 
+                       VerticalAlignment="Bottom"/>
+                <Label Grid.Row="0" Grid.Column="1" 
+                       Margin="0,0,343,106" 
+                       Content="＊使用可能文字：　! ? @ # [ ] ( ) - =" 
+                       Style="{StaticResource GlobalFont25}"
+                       HorizontalAlignment="Right" 
+                       VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
+                <TextBox Grid.Row="0" Grid.Column="0" 
+                         Grid.ColumnSpan="3" Margin="80,0,0,48" 
+                         Template="{StaticResource txt}"
+                         Text="{Binding SourceFileSpecification, UpdateSourceTrigger=PropertyChanged}" 
+                         Name="filePath_TextBox" 
+                         HorizontalAlignment="Left" 
+                         FontSize="30" 
+                         VerticalAlignment="Bottom" 
+                         Width="1295" Height="50"/>
+                <Button Grid.Row="0" Grid.Column="2" 
+                        Margin="30,0,0,48"
+                        Style="{StaticResource GlobalButtonSetting}"
+                        Background="#007FFF"
+                        HorizontalAlignment="Left" 
+                        VerticalAlignment="Bottom" Width="210" Height="50">
+                    <Button.InputBindings>
+                        <MouseBinding MouseAction="LeftDoubleClick"
+                                      Command="{Binding OpenFileDialog}"/>
+                    </Button.InputBindings>
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="\Icons\note.png"
+                               Width="30" Height="30" Margin="5"/>
+                        <TextBlock Text="ファイルを選択"
+                                   Style="{StaticResource GlobalFont25T}" Margin="0,5,5,5"/>
+                    </StackPanel>
+                </Button>
+                <Label Grid.Row="1" Margin="0,24,0,0"
+                       Content="ワイルドカードを認識する" 
+                       Style="{StaticResource GlobalFont30}" 
+                       HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                <Button Grid.Row="1" Grid.Column="0"
+                        Margin="0,28,25,0" Style="{StaticResource GlobalButtonIcon}"
+                        HorizontalAlignment="Right" VerticalAlignment="Top"
+                        Height="40" Width="40">
+                    <Image Source="\Icons\help.png" Height="30" Width="30"/>
+                </Button>
+                <DockPanel  Grid.Row="1" Grid.Column="1">
+                    <ToggleButton 
+                                   VerticalAlignment="Top" 
+                                   HorizontalAlignment="Left" 
+                                   Margin="0,30,0,0" Style="{StaticResource ToggleButtonStyle}" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked"/>
+                    <Label x:Name="TxTWildcard" Content="ワイルドカード使用時、"
+                           Style="{StaticResource GlobalFont30}"
+                           VerticalAlignment="Top" 
+                           Visibility="Hidden"
+                           HorizontalAlignment="Right" Margin="120,25,0,0"  />
+                    <ComboBox x:Name="CBBWildcard" Width="400"
+                              Visibility="Hidden"
+                              ItemsSource="{Binding ItemsWildCard}" 
+                              SelectedItem="{Binding SelectedWildCard, Mode=TwoWay}"
+                              HorizontalAlignment="Right" Margin="30,25,30,0"
+                              VerticalAlignment="Top"/>
+                   
+                </DockPanel>
+                <Label x:Name="TxTSelectFile" Content="ファイルを選択します。"
+                       Grid.Row="1" Grid.Column="2"
+                       Style="{StaticResource GlobalFont30}"
+                       VerticalAlignment="Top" 
+                       Visibility="Hidden"
+                       HorizontalAlignment="Left" Margin="0,25,0,0"  />
+                <Canvas Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,20,0,0">
+                    <Line X1="87" Y1="350" X2="1614" Y2="350" Stroke="Black" StrokeThickness="0.5"/>
+                </Canvas>
+                
+                <Label Grid.Row="1" Grid.Column="0" Margin="80,0,0,59"
+                       Content="ファイル形式"
+                       Style="{StaticResource GlobalFont30}"
+                       HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
+                <Button Grid.Row="1" Grid.Column="0" Margin="0,0,150,62" Style="{StaticResource GlobalButtonIcon}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="40" Width="40">
+                    <Image Source="/Icons/help.png" Height="30" Width="30"/>
+                </Button> 
+                <Label Visibility="{Binding ExcelSetting}" Grid.Row="2" Grid.Column="0" Margin="80,20,0,0"
+                       Content="使用するシート"
+                       Style="{StaticResource GlobalFont30}"
+                       HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Button Visibility="{Binding ExcelSetting}" Grid.Row="2" Grid.Column="0" Margin="0,20,120,0" Style="{StaticResource GlobalButtonIcon}" HorizontalAlignment="Right" VerticalAlignment="Top" Height="40" Width="40">
+                    <Image Source="/Icons/help.png" Height="30" Width="30"/>
+                </Button>
+                <ComboBox Grid.Row="1" Grid.Column="1" Margin="0,0,0,62"
+                          HorizontalAlignment="Left" VerticalAlignment="Bottom" 
+                          ItemsSource="{Binding FileFormatItems}" 
+                          SelectedItem="{Binding SelectedFileFormat, Mode=TwoWay}"  Width="200"/>
+                <Label Grid.Row="1" Grid.Column="1" Style="{StaticResource GlobalFont25}" Foreground="Red"
+                       Visibility="{Binding CheckFileFormatLabel}"
+                       Content="変換元ファイルの入力値と選択内容が異なります。正しい拡張子を指定してください" VerticalAlignment="Bottom" Margin="0,0,0,20"/>
+                <Label Grid.Row="0" Grid.Column="0" 
+                       Margin="80,0,0,0" Name="errLabel" 
+                       VerticalAlignment="Bottom" 
+                       Content="{Binding ErrorMessageLabelSoucre}" 
+                       Style="{StaticResource GlobalFont25}" 
+                       Visibility="{Binding ErrorLabelVisible}" 
+                       Foreground="#FF3333" Grid.ColumnSpan="3"/>
+                <Viewbox Height="30" Grid.Row="2"
+                         Visibility="{Binding ExcelSetting}"
+                         Grid.Column="1" HorizontalAlignment="Left" 
+                         VerticalAlignment="Top" Margin="0,25,0,0">
+                    <RadioButton x:Name="RDONumberSheet"
+                                 HorizontalAlignment="Left" Checked="RdoOption_Checked"></RadioButton>
+                </Viewbox>
+                <Label x:Name="LBLSheetNumber" Grid.Row="2" Grid.Column="1" 
+                       Margin="50,20,0,0" 
+                       Visibility="{Binding ExcelSetting}"
+                       VerticalAlignment="Top" 
+                       IsEnabled="False"
+                       Style="{StaticResource GlobalFont30}"
+                       Content="シート番号" HorizontalAlignment="Left"/>
+                <Viewbox Visibility="{Binding ExcelSetting}" Height="30" Grid.Row="2"
+                         Grid.Column="1" HorizontalAlignment="Right" 
+                         VerticalAlignment="Top" Margin="0,25,200,0">
+                    <RadioButton x:Name="RDOSheetName"  IsChecked="{Binding IsRDONameSheetChecked}"
+                                 HorizontalAlignment="Left" Checked="RdoOption_Checked"/>
+                </Viewbox>
+                <Label x:Name="LBLSheetName" Grid.Row="2" Grid.Column="1" 
+                       Margin="0,20,50,0" 
+                       Visibility="{Binding ExcelSetting}"
+                       VerticalAlignment="Top" 
+                       IsEnabled="False"
+                       Style="{StaticResource GlobalFont30}"
+                       Content="シート名称" HorizontalAlignment="Right"/>
+                <ComboBox x:Name="CBBSheetName" Visibility="{Binding ExcelSetting}"
+                          Grid.Row="2" Grid.Column="2" Margin="0,20,0,0"
+                          ItemsSource="{Binding ItemsSheetNameUse}"
+                          SelectedItem="{Binding SelectedSheetNameUse}"
+                          IsEnabled="False"
+                          HorizontalAlignment="Left" VerticalAlignment="Top"
+                          Width="250"/>
+                <Label Visibility="{Binding SheetNameSetting}"
+                       Style="{StaticResource GlobalFont25}"
+                       Content="シートを選択してください" Foreground="Red"
+                       Grid.Row="2" Grid.Column="2" Margin="0,70,0,0"/>
+                <App:NumericUpDown Visibility="{Binding ExcelSetting}"
+                                   Value="{Binding ValueSheetNumber, Mode=TwoWay}" MaxValue="9" MinValue="1" Step="1"
+                                   x:Name="CBBSheetNumber" Grid.Row="2" Grid.Column="1"
+                                   IsEnabled="False"
+                                   Width="200" Height="45"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Top" Margin="250,20,0,0"/>
+                
+
+
+
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

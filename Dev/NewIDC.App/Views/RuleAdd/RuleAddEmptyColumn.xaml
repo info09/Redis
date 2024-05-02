@@ -1,0 +1,84 @@
+﻿<UserControl xmlns:App="clr-namespace:NewIDC.App"  xmlns:Library="clr-namespace:NewIDC.App.Styles.Library"  x:Class="NewIDC.App.Views.RuleAddColumn.RuleAddEmptyColumn"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NewIDC.App.Views.RuleAddColumn"
+             mc:Ignorable="d" 
+             d:DesignHeight="1080" d:DesignWidth="1920">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" x:Name="TitleSpecifyFile" 
+       Content="列の追加方法を選択してください。" 
+       Style="{StaticResource GlobalFont36}" HorizontalAlignment="Center" />
+
+        <DockPanel Grid.Row="1" HorizontalAlignment="Left">
+            <DockPanel>
+                <DockPanel>
+                    <Border x:Name="ViewDatagrid" 
+                    Background="#FFFDFA"
+                    BorderBrush="Gray"
+                    BorderThickness="0.5"
+                    CornerRadius="15"
+                    Width="1700" Height="670"
+                    Margin="50,0,0,0">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="100"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="150"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Content="{Binding NameRuleConvert}" Style="{StaticResource GlobalFont30}" Margin="50,10,0,0" VerticalAlignment="Bottom"/>
+                            <DockPanel Grid.Row="1">
+                                <Library:CommonDataGrid x:Name="FileDataSetting" 
+                                            DataGridInput="{Binding CommonDataGridInput}"
+                                            Grid.Row="1" Margin="50,0,50,0" />
+
+                            </DockPanel>
+
+                            <Grid Grid.Row="2" HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1600"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Border Background="#E6E6E6" Grid.Row="2"
+                                        BorderThickness="0.5"
+                                        CornerRadius="15"
+                                        Width="1600" Height="100">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="1*"/>
+                                            <ColumnDefinition Width="1*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <DockPanel Grid.Column="0" VerticalAlignment="Center" Margin="30,0,0,0" HorizontalAlignment="Left">
+                                            <Label Content="表示行数" Style="{StaticResource GlobalFont30}"/>
+                                            <ComboBox ItemsSource="{Binding ItemsLine}" SelectedItem="{Binding SelectedLine}" Width="150" Margin="10,0,0,0"/>
+                                        </DockPanel>
+                                        <DockPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,50,0">
+                                            <Label Content="拡大率" Style="{StaticResource GlobalFont30}" Margin="50,0,0,0"/>
+                                            <Button x:Name="ZoomOutDG" Style="{StaticResource GlobalButtonZoom}" Margin="10,0,0,0" Click="ZoomOutDG_Click">
+                                            <Image Source="/Icons/zoom_out.png" Width="30" />
+                                        </Button>
+                                            <TextBlock x:Name="NumberScale" Text="100%" Style="{StaticResource GlobalFont25T}"  Width="80" Margin="20,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                            <Button x:Name="ZoomInDG" Style="{StaticResource GlobalButtonZoom}" Click="ZoomInDG_Click">
+                                            <Image Source="/Icons/zoom_in.png" Width="30"/>
+
+                                        </Button>
+                                    </DockPanel>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+
+                        </Grid>
+                    </Border>
+                </DockPanel>
+                
+            </DockPanel>
+        </DockPanel>
+
+
+    </Grid>
+</UserControl>

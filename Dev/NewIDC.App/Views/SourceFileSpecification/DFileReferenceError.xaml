@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="NewIDC.App.Views.SourceFileSpecification.DFileReferenceError"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NewIDC.App.Views.SourceFileSpecification"
+             mc:Ignorable="d" 
+             d:DesignHeight="1040" d:DesignWidth="1920">
+    <Grid>
+        <Canvas>
+            <StackPanel x:Name="BackGroundDock"  Width="2184" Height="1328" 
+            Visibility="Visible" Panel.ZIndex="999" 
+            Background="#33000000" Canvas.Left="-207"
+            Canvas.Top="-148">
+                <Border x:Name="DialogUpdate"  
+             CornerRadius="30" 
+             Background="#FFFBFBF7" 
+             Width="1300" Height="600"
+             BorderThickness="1" BorderBrush="Black"
+             Visibility="Visible" HorizontalAlignment="Center" Margin="0,200,0,0" >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Grid.Row="0" Margin="30,50,0,0">
+                            <Label Style="{StaticResource GlobalFont36B}" 
+                        Content="Lỗi tham chiếu tập"
+                        HorizontalAlignment="Left" 
+                        VerticalAlignment="Bottom"
+                        Margin="3,0,0,0"/>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1"
+                         HorizontalAlignment="Center" 
+                         Margin="0,0,0,0">
+                            <Label Content="       指定されたファイルが存在しません。&#xA;入力内容が正しいかどうか確認してください。"
+                               Style="{StaticResource GlobalFont36}" Width="700" Height="150" Margin="50,0,0,0"/>
+                            <Label Content="エラーコード：XXX" 
+                               Style="{StaticResource GlobalFont25}" 
+                                HorizontalAlignment="Center" 
+                        Margin="0,20,0,0"/>
+                        </StackPanel>
+                        <DockPanel Grid.Row="2" Margin="0,0,0,0">
+                            <Button x:Name="ButtonErrorFile"  Background="Blue"
+                                 Width="200"
+                                 Content="OK" FontSize="30"
+                                 Style="{StaticResource GlobalButtonSetting}" Margin="0,0,0,0" Click="ButtonErrorFile_Click_1">
+
+                            </Button>
+                        </DockPanel>
+                    </Grid>
+                </Border>
+            </StackPanel>
+        </Canvas>
+    </Grid>
+</UserControl>
+
+    

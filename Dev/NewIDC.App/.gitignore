@@ -1,0 +1,55 @@
+# Ignore Visual Studio files
+.vscode/
+*.suo
+*.user
+*.sln.docstates
+
+# Ignore user-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Ignore build output and logs
+bin/
+obj/
+Debug/
+Release/
+logs/
+*.log
+*.log.*
+node_modules/
+npm-debug.log*
+
+# Ignore configuration files
+appsettings.json
+appsettings.Development.json
+appsettings.Production.json
+
+# Ignore NuGet packages
+*.nuget.props
+*.nuget.targets
+project.lock.json
+project.fragment.lock.json
+
+# Ignore .NET Core user-specific files
+*.user
+.vscode
+
+# Ignore Rider directory
+.idea/
+
+# Ignore Visual Studio Code directory
+.vscode/
+
+# Ignore ReSharper
+_ReSharper*/
+
+# Ignore Rider
+.idea/
+*.sln.iml
+*.suo
+*.userprefs
+*.user
+*.suo
+

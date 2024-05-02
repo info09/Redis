@@ -1,0 +1,29 @@
+﻿<Window x:Class="NewIDC.App.Views.TestExecutionProjectScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NewIDC.App.Views"
+        mc:Ignorable="d"
+        Title="TestExecutionProjectScreen" Height="1040" Width="1920" WindowState="Maximized">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <DataGrid Grid.Column="0" Margin="200" ItemsSource="{Binding ProjectList, Mode=TwoWay}" SelectedItem="{Binding SelectedProject}" AutoGenerateColumns="False" GridLinesVisibility="None" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Project Id" Binding="{Binding ProjectId, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Project Name" Binding="{Binding ProjectName, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Project Memo" Binding="{Binding ProjectMemo, UpdateSourceTrigger=PropertyChanged}"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status, UpdateSourceTrigger=PropertyChanged}"/>
+                
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Column="1" VerticalAlignment="Center">
+            <Button Content="Execute" Grid.Column="1" Height="30" Margin="20" Click="Button_Click_1"/>
+            <Button Content="Delete" Grid.Column="1" Height="30" Margin="20" Click="Button_Click_2"/>
+            <Button Content="Exit" Grid.Column="1" Height="30" Margin="20" Click="Button_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

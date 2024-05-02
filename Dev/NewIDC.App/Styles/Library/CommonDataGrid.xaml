@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="NewIDC.App.Styles.Library.CommonDataGrid"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NewIDC.App.Styles.Library"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <DataGrid x:Name="mainGridData" Style="{StaticResource dataGridStyle}" 
+                      LoadingRow="mainGridData_LoadingRow" 
+                      ItemsSource="{Binding DataGridInput,Mode=TwoWay,
+                                    RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" SelectionUnit="Cell"
+                      EnableRowVirtualization="True"
+                      EnableColumnVirtualization="True"
+                      ScrollViewer.CanContentScroll="True"
+                      VirtualizingStackPanel.IsVirtualizing="True"
+                      VirtualizingStackPanel.VirtualizationMode="Standard"
+                      >
+                <DataGrid.LayoutTransform>
+                    <ScaleTransform 
+                        ScaleX="{Binding ZoomScale,
+                                RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"
+                        ScaleY="{Binding ZoomScale,
+                                RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"></ScaleTransform>
+                </DataGrid.LayoutTransform>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</UserControl>

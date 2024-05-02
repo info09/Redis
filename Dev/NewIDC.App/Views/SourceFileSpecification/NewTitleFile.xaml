@@ -1,0 +1,83 @@
+﻿<UserControl x:Class="NewIDC.App.Views.SourceFileSpecification.NewTitleFile"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NewIDC.App.Views.SourceFileSpecification"
+             mc:Ignorable="d" 
+             d:DesignHeight="1040" d:DesignWidth="1920">
+    <Grid>
+        <Label Grid.Row="0" 
+               Content="作成するプロジェクト名を入力してください。" 
+               Style="{StaticResource GlobalFont36}" 
+               HorizontalAlignment="Center" VerticalAlignment="Top"/>
+        <Border Grid.Row="1" Grid.Column="1" 
+                Background="#FFFDFA" BorderBrush="Gray" 
+                BorderThickness="0.5" 
+                CornerRadius="10" Width="1725" Height="400" 
+                HorizontalAlignment="Center" Margin="0,0,0,30">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="425"/>
+                    <ColumnDefinition Width="1000"/>
+                    <ColumnDefinition Width="150"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="1" Grid.Column="1" 
+                       Content="プロジェクト名" 
+                       HorizontalAlignment="Left" VerticalAlignment="Bottom" 
+                       Style="{StaticResource GlobalFont40}"/>
+                <Label Grid.Row="1" Grid.Column="2" 
+                       Content="＊使用可能文字：　! ? @ # [ ] ( ) - =" 
+                       HorizontalAlignment="Right" VerticalAlignment="Bottom" 
+                       Style="{StaticResource GlobalFont25}"/>
+                
+                <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" 
+                         Template="{StaticResource txt}"
+                         FontSize="30" 
+                         Text="{Binding ProjectNameInput, Mode=TwoWay}"
+                         Height="50"/>
+                <Label Grid.Row="2" Grid.Column="1"
+                       Name="lblError" 
+                       Content="{Binding ErrorMessageLabelName}" 
+                       Foreground="#FF3333" 
+                       Visibility="{Binding ErrorLabelVisible}" 
+                       FontSize="20" 
+                       HorizontalAlignment="Left" 
+                       VerticalAlignment="Top" 
+                       Margin="0,73,0,0" Grid.RowSpan="2"/>
+                <CheckBox Grid.Row="4" Grid.Column="1" 
+                          Style="{StaticResource CheckBoxStyle}" 
+                          Height="15"
+                          IsChecked="{Binding IsChecked, Mode=TwoWay}" 
+                          HorizontalAlignment="Left" VerticalAlignment="Center" Width="15">
+                    <CheckBox.LayoutTransform>
+                        <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
+                    </CheckBox.LayoutTransform>
+                </CheckBox>
+                <Label Grid.Row="4" Grid.Column="1" 
+                       Content="プロジェクトのメモを残す" 
+                       Style="{StaticResource GlobalFont25}"
+                       HorizontalAlignment="Left" VerticalAlignment="Top"
+                       Margin="30,15,0,0"/>
+                <TextBox Grid.Row="4" Grid.Column="2" 
+                         Text="{Binding ProjectNote, UpdateSourceTrigger=PropertyChanged}" 
+                         IsEnabled="{Binding ProjectNoteEnabled}" 
+                         Foreground="{Binding ProjectNoteForeground}" 
+                         Template="{StaticResource txt}"
+                         HorizontalAlignment="Center" TextWrapping="Wrap" 
+                         FontSize="30" VerticalAlignment="Top" Width="1000" 
+                         Height="50" Margin="0,6,0,0"/>
+                
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

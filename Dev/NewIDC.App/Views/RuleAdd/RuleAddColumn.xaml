@@ -1,0 +1,223 @@
+﻿<Window x:Class="NewIDC.App.Views.RuleAddColumn.RuleAddColumnScreen"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:NewIDC.App.Views.RuleAddColumn"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        Title="RuleAddColumn" Height="1080" Width="1920">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="95"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <DockPanel Grid.Column="0">
+            <DockPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF9933" Offset="0"/>
+                    <GradientStop Color="#FF3333" Offset="1"/>
+                </LinearGradientBrush>
+            </DockPanel.Background>
+        </DockPanel>
+        <Grid Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="750"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel>
+                <Button x:Name="ExitNameProject" BorderBrush="Transparent" Height="100" Style="{StaticResource GlobalButtonIcon}"
+                        Background="Transparent" VerticalAlignment="Top" Margin="0,40,0,0" Click="ExitNameProject_Click" >
+                    <StackPanel>
+                        <Image Width="50" Height="50" Source="/Icons/out.png" />
+                        <TextBlock Text="トップ" Style="{StaticResource GlobalFont15T}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,10,0,0"/>
+                    </StackPanel>
+                </Button>
+                <Button  Style="{StaticResource GlobalButtonIcon}"
+                         BorderBrush="Transparent" Height="100" Background="Transparent" 
+                         VerticalAlignment="Top" Margin="0,20,0,0" FocusVisualStyle="{x:Null}">
+                    <StackPanel>
+                        <Image Width="50" Height="50" Source="/Icons/communication.png" />
+                        <TextBlock Text="画面説明" Style="{StaticResource GlobalFont15T}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,15,0,0"/>
+                    </StackPanel>
+                </Button>
+                <Button  Style="{StaticResource GlobalButtonIcon}"
+                         Visibility="{Binding DownloadSpecify}"
+                         BorderBrush="Transparent" Height="100" Background="Transparent" 
+                         VerticalAlignment="Top" Margin="0,20,0,0" FocusVisualStyle="{x:Null}">
+                    <StackPanel>
+                        <Image Width="50" Height="50" Source="/Icons/download.png" />
+                        <TextBlock Text="設定保存" Style="{StaticResource GlobalFont15T}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,15,0,0"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+            <StackPanel Grid.Row="1" VerticalAlignment="Bottom">
+                <Button Style="{StaticResource GlobalButtonIcon}"
+                        BorderBrush="Transparent" Height="100" Background="Transparent" 
+                        VerticalAlignment="Top" Margin="0,20,0,0" FocusVisualStyle="{x:Null}">
+                    <StackPanel>
+                        <Image Width="50" Height="50" Source="/Icons/up-right.png" />
+                        <TextBlock Text="別画面表示" Style="{StaticResource GlobalFont15T}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,15,0,0"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="Setting" Style="{StaticResource GlobalButtonIcon}"
+                        BorderBrush="Transparent" Height="100" Background="Transparent" 
+                        VerticalAlignment="Top" Margin="0,20,0,0" FocusVisualStyle="{x:Null}" MouseDoubleClick="Setting_MouseDoubleClick">
+                    <StackPanel>
+                        <Image Width="50" Height="50" Source="/Icons/setting_w.png" />
+                        <TextBlock Text="設定" Style="{StaticResource GlobalFont15T}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,15,0,0"/>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <DockPanel Grid.Row="0">
+                <Label Content="プロジェクトの新規作成" 
+                       Style="{StaticResource GlobalFont36B}" 
+                       Margin="10,20,0,0"/>
+
+                <DockPanel x:Name="ProjectName" Visibility="{Binding ProjectTitle}" HorizontalAlignment="Right" Margin="0,0,50,0">
+                    <Label  Content="{Binding ProjectNameInput}" 
+                           Style="{StaticResource GlobalFont30}" 
+                           FontWeight="Bold"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" Margin="0,0,10,0"/>
+                    <Button x:Name="EditProjectNameButton" Style="{StaticResource GlobalButtonIcon}" Click="EditProjectNameButton_Click">
+                        <Image Source="/Icons/pen.png" Width="30" Height="30" />
+                    </Button>
+                </DockPanel>
+
+            </DockPanel>
+            <DockPanel Grid.Row="1" x:Name="ContentPanel" />
+            <DockPanel Grid.Row="2">
+                <Button x:Name="PreviousStep" Style="{StaticResource GlobalButtonCancel}"
+                        Background="Transparent"
+                        Margin="50,0,0,0"  Width="150" HorizontalAlignment="Left" Click="PreviousStep_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Image Source="\Icons\left-arrow.png" Width="35" Height="35" HorizontalAlignment="Left" Margin="0,0,20,0"/>
+                        <Label Content="戻る" Style="{StaticResource GlobalFont25}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,30,0"/>
+                    </StackPanel>
+                </Button>
+                <Button x:Name="NextStepBT" Visibility="{Binding NextStepVisibility}" Style="{StaticResource GlobalButtonSetting}"
+                        Width="150" HorizontalAlignment="Right" Margin="0,0,50,0" Click="NextStepBT_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="次へ" Style="{StaticResource GlobalFont25}" Foreground="White" Margin="20,0,0,0"/>
+                        <Image Source="\Icons\right-arrow.png" Width="35" Height="35" Margin="20,0,0,0" HorizontalAlignment="Right"/>
+                    </StackPanel>
+                </Button>
+            </DockPanel>
+            <Button x:Name="ApplySettingDetail" Grid.Row="2" Visibility="{Binding ConversionEditVisibility}"  Style="{StaticResource GlobalButtonSetting}"
+                    Width="180" HorizontalAlignment="Right" Margin="0,0,50,0" Click="ApplySettingDetail_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="変換編集" Foreground="White" Style="{StaticResource GlobalFont25}" Margin="10,0,0,0"/>
+                    <Image Source="\Icons\right-arrow.png" Width="35" Height="35" Margin="10,0,0,0" HorizontalAlignment="Right"/>
+                </StackPanel>
+            </Button>
+        </Grid>
+        <Canvas>
+            <DockPanel x:Name="BackGroundDock"  Width="2184" Height="1328" 
+                        Visibility="Collapsed" Panel.ZIndex="999" 
+                        Background="#33000000" Canvas.Left="-207"
+                        Canvas.Top="-148" Margin="100,0,0,0">
+                <Border x:Name="DialogUpdate"  
+                        CornerRadius="30" 
+                        Background="#FFFBFBF7" 
+                        Width="1300" Height="600"
+                        BorderThickness="1" BorderBrush="Black"
+                        HorizontalAlignment="Center" >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="0.5*"/>
+                            <RowDefinition Height="1.5*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <DockPanel VerticalAlignment="Center" Margin="50,0,50,0">
+                            <Label Style="{StaticResource GlobalFont36B}" Content="プロジェクト名の編集"/>
+                            <Label Style="{StaticResource GlobalFont25B}" Content="{Binding EditProjectName, Mode=TwoWay}" HorizontalAlignment="Right"/>
+                        </DockPanel>
+                        <DockPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Label Content="プロジェクト名を入力してください。" Style="{StaticResource GlobalFont36}"/>
+                        </DockPanel>
+                        <StackPanel Grid.Row="2" Margin="100,0,100,0" VerticalAlignment="Center">
+                            <Label Content="＊使用可能文字：　! ? @ # [ ] ( ) - =" Style="{StaticResource GlobalFont25}" HorizontalAlignment="Right"/>
+                            <TextBox x:Name="EditProjectName" Template="{StaticResource txt}"
+                                     Style="{StaticResource GlobalFont30}"
+                                     Text="{Binding ChangeProjectName}"
+                                     Height="40"/>
+                            <Label Content="{Binding ErrorMessageLabelName}" Visibility="{Binding ErrorLabelVisible}" Style="{StaticResource GlobalFont25}" Foreground="Red"/>
+                        </StackPanel>
+                        <DockPanel Grid.Row="3">
+                            <Button x:Name="ExitDEditButton" Style="{StaticResource GlobalButtonCancel}"
+                                    Background="Transparent"
+                                    Margin="50,0,0,0"  Width="150" HorizontalAlignment="Left" Click="ExitDEditButton_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="\Icons\left-arrow.png" Width="35" Height="35" HorizontalAlignment="Left" Margin="0,0,20,0"/>
+                                    <Label Content="戻る" Style="{StaticResource GlobalFont25}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,30,0"/>
+                                </StackPanel>
+                            </Button>
+                            <Button Style="{StaticResource GlobalButtonSetting}"    
+                                    Width="160" HorizontalAlignment="Right" Margin="0,0,50,0" Click="Button_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="保存する" Style="{StaticResource GlobalFont25}" Foreground="White" Margin="10,0,0,0"/>
+                                    <Image Source="/Icons/tick.png"  Width="35" Height="35" HorizontalAlignment="Right" Margin="10,0,0,0"/>
+
+
+                                </StackPanel>
+                            </Button>
+                        </DockPanel>
+                    </Grid>
+                </Border>
+            </DockPanel>
+        </Canvas>
+        <Canvas>
+            <DockPanel x:Name="DCancel"  Width="2184" Height="1328" 
+                 Visibility="Collapsed" Panel.ZIndex="999" 
+                 Background="#33000000" Canvas.Left="-207"
+                 Canvas.Top="-148">
+                <Border 
+                 CornerRadius="30" 
+                 Background="#FFFBFBF7" 
+                 Width="1300" Height="600"
+                 BorderThickness="1" BorderBrush="Black"
+                 Visibility="Visible" HorizontalAlignment="Center" Margin="150,0,0,0" >
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="2*"/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="トップへ戻る" Style="{StaticResource GlobalFont36B}" Margin="80,50,0,0"/>
+                        <StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="0,20,0,0">
+                            <Label Content="トップ画面へ戻りますか？" Style="{StaticResource GlobalFont36}"/>
+                            <Label Content='＊未保存のデータは失われます' Style="{StaticResource GlobalFont25}" Foreground="Red" HorizontalAlignment="Center" Margin="0,100,0,0"/>
+                        </StackPanel>
+                        <DockPanel Grid.Row="2">
+                            <Button x:Name="CancelDCancel" Style="{StaticResource GlobalButtonCancel}"
+                                    Background="Transparent"
+                                    Margin="50,0,0,0"  Width="200" HorizontalAlignment="Left" Click="CancelDCancel_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="\Icons\left-arrow.png" Width="35" Height="35" HorizontalAlignment="Left" Margin="0,0,20,0"/>
+                                    <Label Content="キャンセル" Style="{StaticResource GlobalFont25}" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,0,30,0"/>
+                                </StackPanel>
+                            </Button>
+                            <Button x:Name="ApplyDCancel" Style="{StaticResource GlobalButtonSetting}"
+                                    Width="150" HorizontalAlignment="Right" Margin="0,0,50,0" Click="ApplyDCancel_Click">
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="戻る" Foreground="White" Style="{StaticResource GlobalFont25}" Margin="20,0,0,0"/>
+                                    <Image Source="\Icons\right-arrow.png" Width="35" Height="35" Margin="20,0,0,0" HorizontalAlignment="Right"/>
+                                </StackPanel>
+                            </Button>
+                        </DockPanel>
+
+                    </Grid>
+                </Border>
+            </DockPanel>
+        </Canvas>
+    </Grid>
+</Window>

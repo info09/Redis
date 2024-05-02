@@ -1,0 +1,175 @@
+﻿<UserControl x:Class="NewIDC.App.Views.SourceFileSpecification.CurrencyDisplayedChanged" xmlns:Library="clr-namespace:NewIDC.App.Styles.Library"  xmlns:App="clr-namespace:NewIDC.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NewIDC.App.Views.SourceFileSpecification"
+             mc:Ignorable="d" 
+             d:DesignHeight="1040" d:DesignWidth="1920">
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" x:Name="TitleSpecifyFile" 
+               Content="表示内容が正しければ変換編集または実行画面へ進んでください。" 
+               Style="{StaticResource GlobalFont36}" HorizontalAlignment="Center" />
+
+        <DockPanel Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+                <DockPanel Grid.Column="0">
+                    <Border Background="#FFFDFA"
+                            BorderBrush="Gray"
+                            BorderThickness="0.5"
+                            CornerRadius="15"
+                            Width="830" Height="670"
+                            Margin="50,0,0,0" HorizontalAlignment="Right">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="100"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="150"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Content="{Binding NameFileConvert}" Style="{StaticResource GlobalFont40}" Margin="50,10,0,0" VerticalAlignment="Bottom"/>
+                            <Library:CommonDataGrid x:Name="FileDataSetting" 
+                                                    Grid.Row="1" Margin="50,0,50,0"/>
+                            <DockPanel Grid.Row="2" HorizontalAlignment="Left" Margin="50,0,0,0">
+                                <Border Background="#E6E6E6" Grid.Row="2"
+                                        BorderThickness="0.5"
+                                        CornerRadius="15"
+                                        Width="730" Height="100">
+                                    <DockPanel VerticalAlignment="Center" Margin="30,0,0,0" HorizontalAlignment="Left">
+                                        <Label Content="表示行数" Style="{StaticResource GlobalFont30}"/>
+                                        <ComboBox ItemsSource="{Binding ItemsLine}" SelectedItem="{Binding SelectedLine}" Width="150" Margin="10,0,0,0"/>
+                                        <Label Content="拡大率" Style="{StaticResource GlobalFont30}" Margin="50,0,0,0"/>
+                                        <Button x:Name="ZoomOutDG" Style="{StaticResource GlobalButtonZoom}" Margin="10,0,0,0" Click="ZoomOutDG_Click">
+                                            <Image Source="/Icons/zoom_out.png" Width="30" />
+                                        </Button>
+                                        <TextBlock x:Name="NumberScale" Text="100%" Style="{StaticResource GlobalFont25T}"  Width="80" Margin="20,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        <Button x:Name="ZoomInDG" Style="{StaticResource GlobalButtonZoom}" Click="ZoomInDG_Click">
+                                            <Image Source="/Icons/zoom_in.png" Width="30"/>
+
+                                        </Button>
+                                    </DockPanel>
+                                </Border>
+                               
+                            </DockPanel>
+                        </Grid>
+                    </Border>
+                </DockPanel>
+                <DockPanel x:Name="SettingControl"  Grid.Column="1">
+                    <Border Background="#FFFDFA"
+                            BorderBrush="Gray"
+                            BorderThickness="0.5"
+                            CornerRadius="15"
+                            Width="830" Height="670"
+                            Margin="5,0,0,0" HorizontalAlignment="Left">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="50"/>
+                                <ColumnDefinition Width="1*"/>
+                            </Grid.ColumnDefinitions>
+                            <DockPanel Grid.Column="0">
+                                <Button x:Name="ResizeButton" Style="{StaticResource GlobalButtonCancel}"
+                                        Background="#808080"
+                                        Content=">>"
+                                        Foreground="White"
+                                        Height="150" Width="30" Click="ResizeButton_Click"/>
+                            </DockPanel>
+                            <Grid Grid.Column="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="100"/>
+                                    <RowDefinition Height="1*"/>
+                                    <RowDefinition Height="150"/>
+                                </Grid.RowDefinitions>
+                                <DockPanel Grid.Row="0">
+                                    <Label Content="金額表示形式の変更" Style="{StaticResource GlobalFont36B}"
+                                           VerticalAlignment="Center"/>
+                                    <Label Content="処理コード：D001" Style="{StaticResource GlobalFont25}"
+                                           VerticalAlignment="Center" Margin="40,0,0,0"/>
+
+                                    <Button Background="Red" Width="150" Style="{StaticResource GlobalButtonCancel}" HorizontalAlignment="Right" Margin="0,0,30,0">
+                                        <DockPanel>
+                                            <Image Source="/Icons/cancel_w.png" Width="30" Margin="0,0,30,0"/>
+                                            <Label Content="中止" Style="{StaticResource GlobalFont30}" Foreground="White"/>
+                                        </DockPanel>
+
+                                    </Button>
+
+                                </DockPanel>
+                                <ScrollViewer Grid.Row="1" Margin="0,20,0,0" >
+                                    <StackPanel HorizontalAlignment="Left">
+                                        <DockPanel>
+                                            <Label Content="先頭の文字" Style="{StaticResource GlobalFont25B}"/>
+                                            <Button Style="{StaticResource GlobalButtonIcon}" Width="30" Margin="10,0,0,0" HorizontalAlignment="Left">
+                                                <Image Source="/Icons/help.png" Width="30" Height="30"/>
+                                            </Button>
+                                        </DockPanel>
+                                        <DockPanel Width="700">
+                                            <ComboBox Width="250" FontSize="20" FontStyle="Normal" Margin="50,20,0,0" ItemsSource="{Binding ItemsFirstMoney}" SelectedItem="{Binding SelectedFirstMoney}"/>
+                                            <Label Content="追加する文字：" Visibility="{Binding VisibilityFirstMoney}"  Style="{StaticResource GlobalFont25}" FontSize="20" VerticalAlignment="Bottom" Margin="50,0,0,5"/>
+                                            <TextBox Template="{StaticResource txt}"  Visibility="{Binding VisibilityFirstMoney}" Width="200" Height="45" VerticalAlignment="Bottom" HorizontalAlignment="Right" Text="{Binding PreviousSymbol}"/>
+                                        </DockPanel>
+                                        <DockPanel Margin="0,40,0,0">
+                                            <Label Content="末尾の文字" Style="{StaticResource GlobalFont25B}"/>
+                                            <Button Style="{StaticResource GlobalButtonIcon}" Width="30" Margin="10,0,0,0" HorizontalAlignment="Left">
+                                                <Image Source="/Icons/help.png" Width="30" Height="30"/>
+                                            </Button>
+                                        </DockPanel>
+                                        <DockPanel Width="700">
+                                            <ComboBox Width="250" FontSize="20" FontStyle="Normal" Margin="50,20,0,0"  ItemsSource="{Binding ItemsLastMoney}" SelectedItem="{Binding SelectedLastMoney}"/>
+                                            <Label Content="追加する文字："  Visibility="{Binding VisibilityLastMoney}"  Style="{StaticResource GlobalFont25}" FontSize="20" VerticalAlignment="Bottom" Margin="50,0,0,5"/>
+                                            <TextBox Template="{StaticResource txt}" Visibility="{Binding VisibilityLastMoney}" Width="203" Height="45" VerticalAlignment="Bottom" HorizontalAlignment="Right" Text="{Binding AfterSymbol}"/>
+                                        </DockPanel>
+                                        <DockPanel Margin="0,40,0,0">
+                                            <Label Content="桁区切り文字" Style="{StaticResource GlobalFont25B}"/>
+                                            <Button Style="{StaticResource GlobalButtonIcon}" Width="30" Margin="10,0,0,0" HorizontalAlignment="Left">
+                                                <Image Source="/Icons/help.png" Width="30" Height="30"/>
+                                            </Button>
+                                        </DockPanel>
+                                        <DockPanel Width="700">
+                                            <ComboBox Width="250"  FontSize="20" FontStyle="Normal" Margin="50,20,0,0" HorizontalAlignment="Left" ItemsSource="{Binding ItemsThousandsSeparator}" SelectedItem="{Binding SelectedThousandsSeparator}"/>
+                                        </DockPanel>
+                                        <DockPanel Margin="0,40,0,0">
+                                            <Label Content="小数桁の付加" Style="{StaticResource GlobalFont25B}"/>
+                                            <Button Style="{StaticResource GlobalButtonIcon}" Width="30" Margin="10,0,0,0" HorizontalAlignment="Left">
+                                                <Image Source="/Icons/help.png" Width="30" Height="30"/>
+                                            </Button>
+                                        </DockPanel>
+                                        <DockPanel Width="700">
+                                            <ComboBox Width="250" FontSize="20" FontStyle="Normal" Margin="50,20,0,0" HorizontalAlignment="Left" ItemsSource="{Binding ItemsAppend}" SelectedItem="{Binding SelectedAppend}"/>
+                                            <Label Content="表示する桁数：小数第" Visibility="{Binding VisibilityAppend}"  Style="{StaticResource GlobalFont25}" FontSize="20" VerticalAlignment="Bottom" Margin="50,0,0,5"/>
+                                            <App:NumericUpDown  Width="100" Visibility="{Binding VisibilityAppend}" Height="45" VerticalAlignment="Bottom" Margin="3,0,3,0" Value="{Binding ValueAppend, Mode=TwoWay}" MinValue="1" MaxValue="9" Step="1"/>
+                                            <Label Content="位まで" Visibility="{Binding VisibilityAppend}" Style="{StaticResource GlobalFont25}" FontSize="20"  VerticalAlignment="Bottom" Margin="0,0,0,5"/>
+
+                                        </DockPanel>
+                                    </StackPanel>
+                                </ScrollViewer>
+                                <StackPanel Grid.Row="2">
+                                    <DockPanel>
+                                        <Button Style="{StaticResource GlobalButtonOpenDialog}" Content="操作結果表示" Foreground="White" FontSize="24" Background="Blue" Width="200" Height="50"  HorizontalAlignment="Left" Margin="0,20,0,0">
+                                        </Button>
+                                        <TextBox Width="500" FontSize="25" Template="{StaticResource txt}" Height="50" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0,10,0,0"/>
+                                    </DockPanel>
+                                    <DockPanel Margin="0,20,0,0" HorizontalAlignment="Left">
+                                        <CheckBox x:Name="CheckHintFileSettingMoney" Style="{StaticResource CheckBoxStyle}" Width="30" Height="30" Checked="CheckHintFileSettingMoney_Checked" Unchecked="CheckHintFileSettingMoney_Unchecked"/>
+                                        <Label Content="各列操作のメモを残す" Style="{StaticResource GlobalFont25}" Margin="15,5,0,0"/>
+                                        <TextBox x:Name="HintFileSettingMoney" FontSize="25" IsEnabled="False" Template="{StaticResource txt}" Width="430" Height="45" Margin="20,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </DockPanel>
+                                </StackPanel>
+
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </DockPanel>
+            </Grid>
+        </DockPanel>
+
+       
+    </Grid>
+</UserControl>

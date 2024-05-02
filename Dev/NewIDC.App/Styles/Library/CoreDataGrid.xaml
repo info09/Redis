@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="NewIDC.App.Styles.Library.CoreDataGrid"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:NewIDC.App.Styles.Library"
+             xmlns:services ="clr-namespace:NewIDC.App.Styles.Library.LibraryServices"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <services:DataRowViewConverter x:Key="drcv"/>
+        <DataTemplate x:Key="CellTemplate">
+            <Grid Margin="-1" 
+                  DataContext="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell},Converter={StaticResource drcv}}"
+                  HorizontalAlignment="{Binding HorizontalAlignment}">
+                <!--<Button Visibility="{Binding Path=HienThi}" x:Name="btnAddColumnRight" HorizontalAlignment="Right" Style="{StaticResource GlobalButtonIcon}">
+                    <Image Source="\Icons\down.png" Width="20" Height="20"  />
+                </Button>-->
+                
+                <ComboBox Style="{StaticResource NormalCombobox}"
+                          DataContext="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell},Converter={StaticResource drcv}}"
+                          Visibility="{Binding Path = ComboboxVisibility}"
+                          ItemsSource="{Binding Path=ComboboxItems}"
+                          DisplayMemberPath="Displayed"
+                          SelectedValuePath="Value"
+                          SelectedValue="{Binding Path=ComboboxSelectedValue}"/>
+                <TextBlock DataContext="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell},Converter={StaticResource drcv}}"
+                               Padding="1"
+                               Visibility="{Binding Path=TextBlockVisibility}"
+                               Text="{Binding Path=TextBlockInput}"
+                               Foreground="{Binding Path = ForeColor}"
+                               Background="{Binding Path = BackColor}"
+                               FontWeight="{Binding Path = FontWeight}"
+                               TextAlignment="{Binding Path=TextAlignment}"/>
+                <CheckBox DataContext="{Binding RelativeSource={RelativeSource AncestorType=DataGridCell},Converter={StaticResource drcv}}"
+                      Visibility="{Binding Path=CheckboxVisibility}"
+                      IsChecked="{Binding Path=IsChecked}"
+                      Content="{Binding Path=CheckboxText}"/>
+            </Grid>
+        </DataTemplate>
+    </UserControl.Resources>
+    <Grid>
+        <DataGrid x:Name="mainDataGrid"
+                  AutoGenerateColumns="True" CanUserAddRows="False"
+                  AutoGeneratingColumn="mainDataGrid_AutoGeneratingColumn"
+                  HeadersVisibility="None"
+                  SelectionUnit="Cell"
+                  SelectionMode="Single"
+                  ItemsSource="{Binding _gridDataProcessedItems,NotifyOnSourceUpdated=True}"
+                  HorizontalGridLinesBrush="#a8a7a7" ColumnWidth="Auto"
+                  VerticalGridLinesBrush="#a8a7a7" CanUserReorderColumns="False" EnableRowVirtualization="False"/>
+    </Grid>
+</UserControl>
